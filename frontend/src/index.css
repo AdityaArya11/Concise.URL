@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { @apply antialiased; }
+  body {
+    @apply bg-gray-25 text-gray-900 font-sans;
+    background-color: #FCFCFB;
+  }
+  html.dark body { background-color: #131210; }
+  * { @apply border-gray-150; }
+  html.dark * { border-color: #2E2C27; }
+}
+
+@layer utilities {
+  .skeleton {
+    @apply relative overflow-hidden bg-gray-100 dark:bg-gray-800;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0 -translate-x-full animate-shimmer;
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+  }
+  html.dark .skeleton::after {
+    background-image: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  }
+}
